@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <div id="text">
+        Hello
+    </div> -->
+    <form>
+        <label for="login">login:</label><br>
+        <input type="text" id="fname" name="fname" value=Vasya><br>
+        <label for="password">mail:</label><br>
+        <input type="text" id="lname" name="lname" value="dfdsfsd@mail.ru">
+        <label for="number"><br>telefon:</label><br>
+        <input type="text" id="lname" name="lname" value="38076575654">
+    </form>
+    
+    Password: <br><input type="password" value="Fake*psw1_" id="myInput">
+    <input type="checkbox" onclick="myFunction3()">
+<label for="psw">Unvisible</label>
+
+
+
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+<script>
+    let myInput = document.getElementById("psw");
+        let letter = document.getElementById("letter");
+        let capital = document.getElementById("capital");
+        let number = document.getElementById("number");
+        let length = document.getElementById("length");
+
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+            document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+            document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+            // Validate lowercase letters
+            let lowerCaseLetters = /[a-z]/g;
+            if (myInput.value.match(lowerCaseLetters)) {
+                letter.classList.remove("invalid");
+                letter.classList.add("valid");
+            } else {
+                letter.classList.remove("valid");
+                letter.classList.add("invalid");
+            }
+
+            // Validate capital letters
+            let upperCaseLetters = /[A-Z]/g;
+            if (myInput.value.match(upperCaseLetters)) {
+                capital.classList.remove("invalid");
+                capital.classList.add("valid");
+            } else {
+                capital.classList.remove("valid");
+                capital.classList.add("invalid");
+            }
+
+            // Validate numbers
+            let numbers = /[0-9]/g;
+            if (myInput.value.match(numbers)) {
+                number.classList.remove("invalid");
+                number.classList.add("valid");
+            } else {
+                number.classList.remove("valid");
+                number.classList.add("invalid");
+            }
+
+            // Validate length
+            if (myInput.value.length >= 8) {
+                length.classList.remove("invalid");
+                length.classList.add("valid");
+            } else {
+                length.classList.remove("valid");
+                length.classList.add("invalid");
+            }
+        }
+    function myFunction3() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    </script>
+    <p>Пароль должен начинаться на букву, может содержать буквы, цифры и знак подчеркивания, звездочку, а также должен
+        содержать не менее одной заглавной буквы. Длина логина и пароля - от 8 до 20 символов.</p>
+<input id="id1" type="" min="8" max="20" required>
+<button onclick="myFunction1()">OK</button>
+
+<script>
+    function myFunction1() {
+        const inpObj = document.getElementById("myInput");
+        console.log(inpObj.value);
+        const regex= /[A-Za-z0-9а-яА-Я_\d@$!%*#?&].{7,19}$/;
+        if (regex.test(inpObj.value))             
+        {
+            console.log("Пароль совпал")
+        }   
+        // if (!inpObj.checkValidity()) {
+        //     document.getElementById("password").innerHTML = inpObj.validationMessage;
+        // } else {
+        //     document.getElementById("password").innerHTML = "Input OK";
+        // }
+    } 
+</script>
+
+<p>Проверка логина.</p>
+<br><input id="id2" type="" min="1" max="100" required>
+<button onclick="myFunction2()">OK</button>
+<script>
+    function myFunction2() {
+        const inpObj1 = document.getElementById("fname");
+        console.log(inpObj1.value);
+        const regex1 = /[A - Za - z0 - 9а - яА - Я_]/;
+        if (regex1.test(inpObj1.value)) {
+            console.log("Логин совпал")
+        }
+        // if (!inpObj.checkValidity()) {
+        //     document.getElementById("password").innerHTML = inpObj.validationMessage;
+        // } else {
+        //     document.getElementById("password").innerHTML = "Input OK";
+        // }
+    } 
+</script>
+</body>
+</html>
